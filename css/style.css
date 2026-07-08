@@ -103,6 +103,11 @@ h3{font-size:1.15rem}
 .hl-arrow:hover{background:var(--green-700);color:#fff;border-color:var(--green-700)}
 .hl-dots{display:flex;justify-content:center;gap:.4rem;padding-top:.9rem}
 .hl-dots button{width:8px;height:8px;padding:0;border:0;border-radius:4px;background:#E7D9A0;cursor:pointer;transition:.2s}
+@media (min-width:860px){
+  .hl-track{gap:1rem;overflow:visible;scroll-snap-type:none}
+  .hl-card{flex:1 1 0}
+  .hl-arrow,.hl-dots{display:none}
+}
 .hl-dots button.active{background:var(--green-700);width:20px}
 
 /* ---------- Cards / grids ---------- */
