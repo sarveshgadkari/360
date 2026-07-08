@@ -197,6 +197,56 @@ if (contactForm) {
   if (co) { sel.value = co; sel.dispatchEvent(new Event("change")); }
 })();
 
+/* ---------------- Highlights slider ---------------- */
+(function () {
+  const track = document.getElementById("hlTrack");
+  const dotsWrap = document.getElementById("hlDots");
+  if (!track || !dotsWrap) return;
+  const cards = Array.from(track.children);
+  const prevBtn = document.querySelector(".hl-prev");
+  const nextBtn = document.querySelector(".hl-next");
+  let index = 0;
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.setAttribute("aria-label", "Go to highlight " + (i + 1));
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function goTo(i) {
+    index = (i + cards.length) % cards.length;
+    track.scrollTo({ left: cards[index].offsetLeft, behavior: "smooth" });
+    dots.forEach((d, di) => d.classList.toggle("active", di === index));
+  }
+  if (prevBtn) prevBtn.addEventListener("click", () => goTo(index - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => goTo(index + 1));
+
+  let timer = setInterval(() => goTo(index + 1), 4500);
+  function pause() { clearInterval(timer); }
+  function resume() { timer = setInterval(() => goTo(index + 1), 4500); }
+  track.addEventListener("mouseenter", pause);
+  track.addEventListener("mouseleave", resume);
+  track.addEventListener("touchstart", pause, { passive: true });
+  track.addEventListener("touchend", resume);
+
+  let scrollTimeout;
+  track.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      let closest = 0, min = Infinity;
+      cards.forEach((c, i) => {
+        const d = Math.abs(c.offsetLeft - track.scrollLeft);
+        if (d < min) { min = d; closest = i; }
+      });
+      index = closest;
+      dots.forEach((d, di) => d.classList.toggle("active", di === index));
+    }, 100);
+  });
+})();
+
 /* ---------------- Mobile CTA: stays visible throughout scroll for lead capture,
    only steps aside while a modal/popup is open on top of it ---------------- */
 (function () {
