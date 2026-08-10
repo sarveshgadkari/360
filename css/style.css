@@ -394,82 +394,96 @@ h3{font-size:1.15rem}
 @media (max-width:980px){.pdp-grid{grid-template-columns:1fr;gap:2rem}.pdp-main{height:280px}}
 
 /* ============ Free-trial landing page (lead gen / SEO) ============ */
-.lp-page{background:#fff}
+.lp-page{background:#fff;overflow-x:hidden}
+body.lp-page{padding-bottom:0}
 .lp-page .float-call,.lp-page .float-wa{bottom:1.4rem}
 
 .lp-wrap{width:min(1080px,92%);margin-inline:auto}
 
-.lp-brand{display:inline-block;margin-bottom:1.75rem}
-.lp-brand img{width:auto;height:58px;max-width:240px;object-fit:contain;display:block;background:#fff;border-radius:6px;padding:.25rem .4rem}
+.lp-brand{display:inline-block;margin-bottom:1.5rem;max-width:100%}
+.lp-brand img{width:auto;height:58px;max-width:min(240px,100%);object-fit:contain;display:block;background:#fff;border-radius:6px;padding:.25rem .4rem}
 
-.lp-hero{background:var(--green-100);padding:clamp(1.6rem,4vw,2.8rem) 0 clamp(2.2rem,5vw,3.2rem)}
+.lp-hero{background:var(--green-100);padding:clamp(1.25rem,4vw,2.8rem) 0 clamp(1.8rem,5vw,3.2rem)}
 .lp-hero-grid{
   display:grid;
-  grid-template-columns:1fr 380px;
-  gap:2.5rem;
-  align-items:center;
+  grid-template-columns:1fr minmax(280px,380px);
+  gap:clamp(1.25rem,3vw,2.5rem);
+  align-items:start;
 }
 .lp-copy h1{
   color:var(--green-900);
-  font-size:clamp(1.8rem,3.5vw,2.55rem);
+  font-size:clamp(1.55rem,5vw,2.55rem);
   line-height:1.2;
   margin:0;
+  overflow-wrap:anywhere;
 }
-.lp-lead{color:var(--ink-soft);margin:1rem 0 1.25rem;font-size:1.02rem;max-width:36rem}
-.lp-checklist{display:grid;gap:.65rem;margin:0 0 1.4rem;padding:0}
+.lp-lead{color:var(--ink-soft);margin:.85rem 0 1.15rem;font-size:clamp(.95rem,2.8vw,1.02rem);max-width:36rem}
+.lp-checklist{display:grid;gap:.65rem;margin:0 0 1.25rem;padding:0}
 .lp-checklist li{
-  display:flex;align-items:center;gap:.65rem;
-  font-weight:700;color:var(--green-900);font-size:.94rem;
+  display:flex;align-items:flex-start;gap:.65rem;
+  font-weight:700;color:var(--green-900);font-size:clamp(.88rem,2.6vw,.94rem);
+  line-height:1.4;
 }
 .lp-checklist li::before{
   content:"\2713";flex:none;
   width:22px;height:22px;border-radius:50%;
   background:var(--yellow-500);color:var(--green-900);
   font-weight:800;font-size:.7rem;
-  display:grid;place-items:center;
+  display:grid;place-items:center;margin-top:.1rem;
 }
 .lp-trust{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1rem;
+  gap:.75rem;
   border-top:1px solid #DCE7DE;
-  padding-top:1.15rem;
-  margin-bottom:1.15rem;
+  padding-top:1.1rem;
+  margin-bottom:1.1rem;
   max-width:28rem;
 }
-.lp-trust b{display:block;font-family:var(--font-display);font-size:1.3rem;color:var(--green-700);line-height:1.15}
-.lp-trust span{font-size:.78rem;color:var(--ink-soft)}
-.lp-phone{display:inline-block;color:var(--green-700);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.lp-trust b{display:block;font-family:var(--font-display);font-size:clamp(1.1rem,3.5vw,1.3rem);color:var(--green-700);line-height:1.15}
+.lp-trust span{font-size:clamp(.68rem,2.2vw,.78rem);color:var(--ink-soft);line-height:1.3}
+.lp-phone{display:inline-block;color:var(--green-700);font-weight:800;text-decoration:underline;text-underline-offset:3px;font-size:1rem}
 
 .lp-form{
   background:#fff;
-  padding:1.5rem 1.45rem;
+  padding:clamp(1.15rem,3vw,1.5rem);
   border:1px solid #DCE7DE;
   border-radius:8px;
-  box-shadow:0 8px 24px rgba(35,77,10,.07);
+  box-shadow:0 8px 24px rgba(10,64,35,.08);
   width:100%;
+  min-width:0;
 }
-.lp-form h2{color:var(--green-900);font-size:1.3rem;margin:0 0 .25rem}
-.lp-form > p{color:var(--ink-soft);font-size:.88rem;margin:0 0 1.1rem}
-.lp-form .field{margin-bottom:.8rem}
-.lp-form .btn{width:100%;margin-top:.15rem;padding:.85rem 1rem;font-size:.98rem;white-space:normal}
-.lp-form .form-note{margin-top:.75rem;font-size:.78rem;color:var(--ink-soft);text-align:center}
+.lp-form h2{color:var(--green-900);font-size:clamp(1.15rem,3.5vw,1.3rem);margin:0 0 .25rem}
+.lp-form > p{color:var(--ink-soft);font-size:.88rem;margin:0 0 1rem}
+.lp-form .field{margin-bottom:.75rem}
+.lp-form .field input,
+.lp-form .field select{
+  font-size:16px; /* prevents iOS zoom on focus */
+  min-height:48px;
+  border-radius:8px;
+}
+.lp-form .btn{
+  width:100%;margin-top:.15rem;padding:.95rem 1rem;
+  font-size:1rem;white-space:normal;min-height:50px;
+}
+.lp-form .form-note{margin-top:.7rem;font-size:.78rem;color:var(--ink-soft);text-align:center}
 .lp-form #trialFormOk{color:var(--green-700);font-weight:700}
 
-.lp-steps,.lp-why,.lp-faq,.lp-clinic{padding:clamp(2.4rem,5.5vw,3.8rem) 0}
+.lp-steps,.lp-why,.lp-faq,.lp-clinic{padding:clamp(1.8rem,5vw,3.8rem) 0}
 .lp-steps{background:#fff}
 .lp-why{background:#fff;padding-top:0}
-.lp-wrap .section-head{margin-bottom:1.6rem;max-width:none}
+.lp-wrap .section-head{margin-bottom:1.35rem;max-width:none}
+.lp-wrap .section-head h2{font-size:clamp(1.25rem,4vw,2rem)}
 
 .lp-step-list{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:1.5rem;
+  gap:1.25rem;
   list-style:none;margin:0;padding:0;
 }
-.lp-step-list li{border-top:3px solid var(--yellow-500);padding-top:1rem}
-.lp-step-num{display:block;font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--yellow-500);margin-bottom:.35rem}
-.lp-step-list h3{margin:0 0 .35rem;color:var(--green-900)}
+.lp-step-list li{border-top:3px solid var(--yellow-500);padding-top:1rem;min-width:0}
+.lp-step-num{display:block;font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--yellow-500);margin-bottom:.35rem}
+.lp-step-list h3{margin:0 0 .35rem;color:var(--green-900);font-size:1.05rem}
 .lp-step-list p{color:var(--ink-soft);font-size:.92rem;margin:0}
 
 .lp-why-list{
@@ -478,47 +492,91 @@ h3{font-size:1.15rem}
   gap:1rem;
   list-style:none;margin:0;padding:0;
 }
-.lp-why-list li{padding:1.15rem 1.2rem;background:var(--green-100);border:1px solid #DCE7DE;border-radius:8px}
+.lp-why-list li{padding:1.1rem 1.15rem;background:var(--green-100);border:1px solid #DCE7DE;border-radius:8px;min-width:0}
 .lp-why-list h3{margin:0 0 .35rem;color:var(--green-900);font-size:1.02rem}
 .lp-why-list p{color:var(--ink-soft);font-size:.9rem;margin:0}
 
 .lp-faq{background:var(--yellow-050);border-block:1px solid #F1E4B8}
 .lp-faq .faq{max-width:none}
+.lp-faq .faq summary{gap:.75rem;line-height:1.35}
+.lp-faq .faq p{overflow-wrap:anywhere}
 
-.lp-clinic{padding-top:clamp(2rem,4vw,2.8rem);padding-bottom:clamp(1.8rem,4vw,2.6rem)}
+.lp-clinic{padding-top:clamp(1.6rem,4vw,2.8rem);padding-bottom:clamp(1.4rem,4vw,2.6rem)}
 .lp-clinic-inner{
   display:grid;
   grid-template-columns:1fr auto;
-  gap:1.5rem;
+  gap:1.25rem;
   align-items:center;
-  padding:1.5rem 1.6rem;
+  padding:clamp(1.15rem,3vw,1.6rem);
   background:var(--green-100);
   border:1px solid #DCE7DE;
   border-radius:8px;
 }
-.lp-clinic h2{margin:.3rem 0 .45rem;color:var(--green-900)}
-.lp-clinic p{color:var(--ink-soft);margin:0;max-width:40rem}
+.lp-clinic h2{margin:.3rem 0 .45rem;color:var(--green-900);font-size:clamp(1.2rem,4vw,1.6rem)}
+.lp-clinic p{color:var(--ink-soft);margin:0;max-width:40rem;font-size:.95rem}
 .lp-hours{margin-top:.5rem!important;font-weight:700;color:var(--green-900)!important}
 .lp-clinic-actions{display:flex;gap:.65rem;flex-wrap:wrap;justify-content:flex-end}
 
-.lp-legal{text-align:center;font-size:.8rem;color:var(--ink-soft);padding:0 1rem 2rem;margin:0}
+.lp-legal{
+  text-align:center;font-size:.8rem;color:var(--ink-soft);
+  padding:0 1rem calc(2rem + env(safe-area-inset-bottom));
+  margin:0;
+}
 .lp-legal a{color:var(--green-700);font-weight:700;text-decoration:underline}
 
+/* Tablet */
 @media (max-width:900px){
-  .lp-hero-grid{grid-template-columns:1fr;gap:1.5rem}
-  .lp-form{max-width:480px}
+  .lp-hero-grid{grid-template-columns:1fr;gap:1.35rem}
+  .lp-form{max-width:none;order:-1} /* form first on mobile for lead gen */
+  .lp-copy{order:1}
   .lp-trust{max-width:none}
-  .lp-step-list,.lp-why-list{grid-template-columns:1fr}
+  .lp-step-list{grid-template-columns:1fr;gap:1rem}
+  .lp-why-list{grid-template-columns:1fr}
   .lp-clinic-inner{grid-template-columns:1fr}
-  .lp-clinic-actions{justify-content:flex-start}
-  .lp-page .float-call,.lp-page .float-wa{bottom:1rem}
+  .lp-clinic-actions{justify-content:stretch}
+  .lp-clinic-actions .btn{flex:1;min-width:140px;text-align:center}
+  .lp-page .float-call,
+  .lp-page .float-wa{
+    bottom:calc(1rem + env(safe-area-inset-bottom));
+    width:50px;height:50px;
+  }
 }
+
+/* Phone */
 @media (max-width:680px){
+  body.lp-page{padding-bottom:0}
   .lp-page{padding-bottom:0}
-  .lp-page .float-call{display:grid}
-  .lp-page .float-wa{bottom:1rem}
-  .lp-trust{grid-template-columns:repeat(3,1fr);gap:.6rem}
-  .lp-trust b{font-size:1.1rem}
-  .lp-trust span{font-size:.7rem}
+  .lp-wrap{width:min(1080px,94%)}
+  .lp-brand{margin-bottom:1.1rem}
+  .lp-brand img{height:44px;max-width:170px;padding:.15rem .3rem}
+  .lp-hero{padding:1.1rem 0 1.5rem}
+  .lp-hero-grid{gap:1.15rem}
+  .lp-copy h1{font-size:1.55rem}
+  .lp-lead{margin:.7rem 0 1rem;font-size:.95rem}
+  .lp-checklist{gap:.55rem;margin-bottom:1.1rem}
+  .lp-checklist li{font-size:.88rem}
+  .lp-trust{gap:.45rem;padding-top:.95rem;margin-bottom:.95rem}
+  .lp-trust b{font-size:1.05rem}
+  .lp-trust span{font-size:.66rem}
+  .lp-form{padding:1.15rem 1rem;border-radius:10px}
+  .lp-form h2{font-size:1.2rem}
+  .lp-steps,.lp-why,.lp-faq{padding:1.7rem 0}
+  .lp-why{padding-top:0}
+  .lp-clinic{padding:1.4rem 0 1.2rem}
+  .lp-clinic-actions{flex-direction:column}
+  .lp-clinic-actions .btn{width:100%;flex:none}
+  .lp-legal{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}
+  .lp-page .float-call{display:grid;left:.85rem}
+  .lp-page .float-wa{right:.85rem;bottom:calc(.9rem + env(safe-area-inset-bottom))}
+  .lp-page .float-call{bottom:calc(.9rem + env(safe-area-inset-bottom))}
+  .lp-faq .faq summary{padding:.95rem 1rem;font-size:.92rem}
+  .lp-faq .faq p{padding:0 1rem 1rem;font-size:.9rem}
+}
+
+@media (max-width:380px){
+  .lp-trust{grid-template-columns:1fr;gap:.55rem}
+  .lp-trust > div{display:flex;align-items:baseline;gap:.45rem}
+  .lp-trust b{font-size:1rem}
+  .lp-trust span{font-size:.75rem}
 }
 
