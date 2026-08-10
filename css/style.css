@@ -593,14 +593,45 @@ body.lp-page{padding-bottom:0}
 
 .lp-clinic{padding-top:clamp(1.6rem,4vw,2.8rem);padding-bottom:clamp(1.4rem,4vw,2.6rem)}
 .lp-clinic-inner{
-  padding:clamp(1.15rem,3vw,1.6rem);
+  padding:clamp(1.4rem,3.5vw,2rem) clamp(1.2rem,4vw,2.2rem);
   background:var(--green-100);
   border:1px solid #DCE7DE;
-  border-radius:8px;
+  border-radius:10px;
+  max-width:720px;
+  margin-inline:auto;
 }
-.lp-clinic h2{margin:.3rem 0 .45rem;color:var(--green-900);font-size:clamp(1.2rem,4vw,1.6rem)}
-.lp-clinic p{color:var(--ink-soft);margin:0;max-width:40rem;font-size:.95rem}
-.lp-hours{margin-top:.5rem!important;font-weight:700;color:var(--green-900)!important}
+.lp-clinic-inner .eyebrow{justify-content:center}
+.lp-clinic h2{
+  margin:.4rem 0 .7rem;
+  color:var(--green-900);
+  font-size:clamp(1.25rem,4vw,1.7rem);
+  line-height:1.25;
+}
+.lp-address{
+  color:var(--ink-soft);
+  margin:0 auto;
+  max-width:34rem;
+  font-size:clamp(.9rem,2.6vw,.98rem);
+  line-height:1.55;
+}
+.lp-hours-list{
+  list-style:none;
+  margin:1.1rem auto 0;
+  padding:1rem 0 0;
+  border-top:1px solid #DCE7DE;
+  display:grid;
+  gap:.55rem;
+  max-width:22rem;
+}
+.lp-hours-list li{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  font-size:.92rem;
+}
+.lp-hours-list span{color:var(--ink-soft);font-weight:600}
+.lp-hours-list b{color:var(--green-900);font-weight:800;text-align:right}
 
 .lp-legal{
   text-align:center;font-size:.8rem;color:var(--ink-soft);
@@ -713,8 +744,10 @@ body.lp-page{padding-bottom:0}
   .lp-step-list p{font-size:.88rem;max-width:100%;padding:0 .35rem}
   .lp-why-list li{padding:1rem .95rem}
   .lp-clinic{padding:1.25rem 0 1.1rem}
-  .lp-clinic-inner{padding:1.1rem .95rem}
-  .lp-clinic p{font-size:.9rem}
+  .lp-clinic-inner{padding:1.25rem 1rem;border-radius:10px}
+  .lp-address{font-size:.9rem}
+  .lp-hours-list{max-width:100%;padding-top:.9rem;margin-top:.95rem}
+  .lp-hours-list li{font-size:.88rem;gap:.75rem}
   .lp-legal{
     padding:0 1rem calc(1.25rem + env(safe-area-inset-bottom));
     font-size:.74rem;
