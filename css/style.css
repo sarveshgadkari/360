@@ -396,12 +396,26 @@ h3{font-size:1.15rem}
 /* ============ Free-trial landing page (lead gen / SEO) ============ */
 .lp-page{background:#fff;overflow-x:hidden}
 body.lp-page{padding-bottom:0}
-.lp-page .float-call,.lp-page .float-wa{bottom:1.4rem}
 
 .lp-wrap{width:min(1080px,92%);margin-inline:auto}
 
-.lp-brand{display:inline-block;margin-bottom:1.5rem;max-width:100%}
-.lp-brand img{width:auto;height:58px;max-width:min(240px,100%);object-fit:contain;display:block;background:#fff;border-radius:6px;padding:.25rem .4rem}
+/* Sticky logo bar */
+.lp-sticky{
+  position:sticky;top:0;z-index:90;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid #E2E2E2;
+  backdrop-filter:blur(8px);
+}
+.lp-sticky .lp-wrap{display:flex;align-items:center;padding:.55rem 0}
+.lp-brand{display:inline-block;max-width:100%;margin:0}
+.lp-brand img{
+  width:auto;height:52px;max-width:min(220px,70vw);
+  object-fit:contain;display:block;background:#fff;border-radius:6px;
+}
+
+.lp-center{text-align:center}
+.lp-center .eyebrow{justify-content:center}
+.lp-center p{margin-inline:auto}
 
 .lp-hero{background:var(--green-100);padding:clamp(1.25rem,4vw,2.8rem) 0 clamp(1.8rem,5vw,3.2rem)}
 .lp-hero-grid{
@@ -436,13 +450,12 @@ body.lp-page{padding-bottom:0}
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:.75rem;
   border-top:1px solid #DCE7DE;
-  padding-top:1.1rem;
-  margin-bottom:1.1rem;
-  max-width:28rem;
+  padding-top:1.15rem;
+  max-width:32rem;
+  text-align:center;
 }
 .lp-trust b{display:block;font-family:var(--font-display);font-size:clamp(1.1rem,3.5vw,1.3rem);color:var(--green-700);line-height:1.15}
 .lp-trust span{font-size:clamp(.68rem,2.2vw,.78rem);color:var(--ink-soft);line-height:1.3}
-.lp-phone{display:inline-block;color:var(--green-700);font-weight:800;text-decoration:underline;text-underline-offset:3px;font-size:1rem}
 
 .lp-form{
   background:#fff;
@@ -452,13 +465,14 @@ body.lp-page{padding-bottom:0}
   box-shadow:0 8px 24px rgba(10,64,35,.08);
   width:100%;
   min-width:0;
+  scroll-margin-top:5.5rem;
 }
 .lp-form h2{color:var(--green-900);font-size:clamp(1.15rem,3.5vw,1.3rem);margin:0 0 .25rem}
 .lp-form > p{color:var(--ink-soft);font-size:.88rem;margin:0 0 1rem}
 .lp-form .field{margin-bottom:.75rem}
 .lp-form .field input,
 .lp-form .field select{
-  font-size:16px; /* prevents iOS zoom on focus */
+  font-size:16px;
   min-height:48px;
   border-radius:8px;
 }
@@ -468,6 +482,45 @@ body.lp-page{padding-bottom:0}
 }
 .lp-form .form-note{margin-top:.7rem;font-size:.78rem;color:var(--ink-soft);text-align:center}
 .lp-form #trialFormOk{color:var(--green-700);font-weight:700}
+
+/* Offer stripe */
+.lp-stripe{
+  background:var(--yellow-300);
+  color:var(--green-900);
+  padding:1.1rem 0;
+}
+.lp-stripe-inner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  text-align:center;
+}
+.lp-stripe p{
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(1rem,3.2vw,1.35rem);
+  line-height:1.3;
+}
+.lp-stripe .btn{flex:none;min-height:46px;padding:.7rem 1.35rem}
+.lp-stripe-btn{
+  background:var(--green-500);
+  color:#fff;
+  border:2px solid var(--green-500);
+  border-radius:6px;
+  font-weight:800;
+  font-size:.95rem;
+  letter-spacing:.01em;
+  box-shadow:0 4px 14px rgba(10,64,35,.18);
+  white-space:nowrap;
+}
+.lp-stripe-btn:hover{
+  background:var(--green-900);
+  border-color:var(--green-900);
+  color:#fff;
+}
 
 .lp-steps,.lp-why,.lp-faq,.lp-clinic{padding:clamp(1.8rem,5vw,3.8rem) 0}
 .lp-steps{background:#fff}
@@ -480,17 +533,19 @@ body.lp-page{padding-bottom:0}
   grid-template-columns:repeat(3,1fr);
   gap:1.25rem;
   list-style:none;margin:0;padding:0;
+  text-align:center;
 }
 .lp-step-list li{border-top:3px solid var(--yellow-500);padding-top:1rem;min-width:0}
 .lp-step-num{display:block;font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--yellow-500);margin-bottom:.35rem}
 .lp-step-list h3{margin:0 0 .35rem;color:var(--green-900);font-size:1.05rem}
-.lp-step-list p{color:var(--ink-soft);font-size:.92rem;margin:0}
+.lp-step-list p{color:var(--ink-soft);font-size:.92rem;margin:0;max-width:22rem;margin-inline:auto}
 
 .lp-why-list{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:1rem;
   list-style:none;margin:0;padding:0;
+  text-align:center;
 }
 .lp-why-list li{padding:1.1rem 1.15rem;background:var(--green-100);border:1px solid #DCE7DE;border-radius:8px;min-width:0}
 .lp-why-list h3{margin:0 0 .35rem;color:var(--green-900);font-size:1.02rem}
@@ -503,10 +558,6 @@ body.lp-page{padding-bottom:0}
 
 .lp-clinic{padding-top:clamp(1.6rem,4vw,2.8rem);padding-bottom:clamp(1.4rem,4vw,2.6rem)}
 .lp-clinic-inner{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:1.25rem;
-  align-items:center;
   padding:clamp(1.15rem,3vw,1.6rem);
   background:var(--green-100);
   border:1px solid #DCE7DE;
@@ -515,68 +566,128 @@ body.lp-page{padding-bottom:0}
 .lp-clinic h2{margin:.3rem 0 .45rem;color:var(--green-900);font-size:clamp(1.2rem,4vw,1.6rem)}
 .lp-clinic p{color:var(--ink-soft);margin:0;max-width:40rem;font-size:.95rem}
 .lp-hours{margin-top:.5rem!important;font-weight:700;color:var(--green-900)!important}
-.lp-clinic-actions{display:flex;gap:.65rem;flex-wrap:wrap;justify-content:flex-end}
 
 .lp-legal{
   text-align:center;font-size:.8rem;color:var(--ink-soft);
-  padding:0 1rem calc(2rem + env(safe-area-inset-bottom));
+  padding:0 1rem calc(5.2rem + env(safe-area-inset-bottom));
   margin:0;
 }
 .lp-legal a{color:var(--green-700);font-weight:700;text-decoration:underline}
 
+/* Fixed full-width footer CTA bar */
+.lp-footer-cta{
+  position:fixed;
+  left:0;right:0;bottom:0;z-index:95;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  background:#fff;
+  border-top:1px solid #DCE7DE;
+  box-shadow:0 -6px 20px rgba(0,0,0,.1);
+  padding:0 0 env(safe-area-inset-bottom);
+}
+.lp-footer-cta a{
+  display:flex;align-items:center;justify-content:center;gap:.45rem;
+  min-height:54px;
+  font-weight:800;font-size:.95rem;
+  text-align:center;padding:.75rem .5rem;
+}
+.lp-footer-wa{background:#25D366;color:#fff}
+.lp-footer-wa:hover{background:#1ebe57;color:#fff}
+.lp-footer-book{background:var(--yellow-300);color:#3A3A3A}
+.lp-footer-book:hover{background:var(--yellow-500);color:#fff}
+
+/* Hide old floating buttons on this page */
+.lp-page .float-call,
+.lp-page .float-wa{display:none!important}
+
+@media (max-width:680px){
+  body.lp-page{padding-bottom:calc(3.6rem + env(safe-area-inset-bottom))!important}
+}
+
 /* Tablet */
 @media (max-width:900px){
+  .lp-sticky .lp-wrap{justify-content:center}
   .lp-hero-grid{grid-template-columns:1fr;gap:1.35rem}
-  .lp-form{max-width:none;order:-1} /* form first on mobile for lead gen */
-  .lp-copy{order:1}
-  .lp-trust{max-width:none}
-  .lp-step-list{grid-template-columns:1fr;gap:1rem}
+  .lp-form{max-width:none;order:-1}
+  .lp-copy{order:1;text-align:center}
+  .lp-lead{margin-inline:auto}
+  .lp-checklist{justify-items:center}
+  .lp-checklist li{text-align:left;max-width:22rem;width:100%}
+  .lp-trust{max-width:none;width:100%;margin-inline:auto}
+  .lp-step-list{grid-template-columns:1fr;gap:1.15rem}
   .lp-why-list{grid-template-columns:1fr}
-  .lp-clinic-inner{grid-template-columns:1fr}
-  .lp-clinic-actions{justify-content:stretch}
-  .lp-clinic-actions .btn{flex:1;min-width:140px;text-align:center}
-  .lp-page .float-call,
-  .lp-page .float-wa{
-    bottom:calc(1rem + env(safe-area-inset-bottom));
-    width:50px;height:50px;
-  }
+  .lp-stripe-inner{flex-direction:column;gap:.85rem}
+  .lp-stripe .btn{width:100%;max-width:320px}
+  .lp-stripe-btn{width:100%;max-width:320px;min-height:50px;font-size:1rem}
+  .lp-clinic p{max-width:100%}
 }
 
 /* Phone */
 @media (max-width:680px){
-  body.lp-page{padding-bottom:0}
+  body.lp-page{padding-bottom:calc(3.6rem + env(safe-area-inset-bottom))}
   .lp-page{padding-bottom:0}
   .lp-wrap{width:min(1080px,94%)}
-  .lp-brand{margin-bottom:1.1rem}
-  .lp-brand img{height:44px;max-width:170px;padding:.15rem .3rem}
-  .lp-hero{padding:1.1rem 0 1.5rem}
-  .lp-hero-grid{gap:1.15rem}
-  .lp-copy h1{font-size:1.55rem}
-  .lp-lead{margin:.7rem 0 1rem;font-size:.95rem}
-  .lp-checklist{gap:.55rem;margin-bottom:1.1rem}
-  .lp-checklist li{font-size:.88rem}
-  .lp-trust{gap:.45rem;padding-top:.95rem;margin-bottom:.95rem}
+  .lp-sticky{box-shadow:0 2px 10px rgba(0,0,0,.06)}
+  .lp-sticky .lp-wrap{padding:.5rem 0;justify-content:center}
+  .lp-brand img{height:40px;max-width:150px}
+  .lp-hero{padding:1rem 0 1.35rem}
+  .lp-hero-grid{gap:1.1rem}
+  .lp-copy h1{font-size:1.45rem;text-align:center;line-height:1.25}
+  .lp-lead{margin:.65rem auto 1rem;font-size:.93rem;text-align:center;max-width:34rem}
+  .lp-checklist{gap:.55rem;margin:0 auto 1.1rem;justify-items:center}
+  .lp-checklist li{font-size:.86rem;width:100%;max-width:20.5rem}
+  .lp-trust{
+    gap:.4rem;
+    padding-top:1rem;
+    margin:0 auto;
+    width:100%;
+    text-align:center;
+  }
   .lp-trust b{font-size:1.05rem}
-  .lp-trust span{font-size:.66rem}
-  .lp-form{padding:1.15rem 1rem;border-radius:10px}
-  .lp-form h2{font-size:1.2rem}
-  .lp-steps,.lp-why,.lp-faq{padding:1.7rem 0}
+  .lp-trust span{font-size:.65rem;display:block}
+  .lp-form{
+    padding:1.1rem .95rem;
+    border-radius:10px;
+    scroll-margin-top:4.2rem;
+  }
+  .lp-form h2{font-size:1.15rem;text-align:center}
+  .lp-form > p{text-align:center}
+  .lp-stripe{padding:1.05rem 0}
+  .lp-stripe p{font-size:1.05rem;padding:0 .25rem}
+  .lp-stripe-btn{max-width:100%;width:100%;min-height:50px}
+  .lp-steps,.lp-why,.lp-faq{padding:1.55rem 0}
   .lp-why{padding-top:0}
-  .lp-clinic{padding:1.4rem 0 1.2rem}
-  .lp-clinic-actions{flex-direction:column}
-  .lp-clinic-actions .btn{width:100%;flex:none}
-  .lp-legal{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}
-  .lp-page .float-call{display:grid;left:.85rem}
-  .lp-page .float-wa{right:.85rem;bottom:calc(.9rem + env(safe-area-inset-bottom))}
-  .lp-page .float-call{bottom:calc(.9rem + env(safe-area-inset-bottom))}
-  .lp-faq .faq summary{padding:.95rem 1rem;font-size:.92rem}
-  .lp-faq .faq p{padding:0 1rem 1rem;font-size:.9rem}
+  .lp-wrap .section-head{margin-bottom:1.15rem}
+  .lp-step-list{gap:1rem}
+  .lp-step-list li{padding-top:.9rem}
+  .lp-step-num{font-size:1.25rem}
+  .lp-step-list h3{font-size:1rem}
+  .lp-step-list p{font-size:.88rem;max-width:100%}
+  .lp-why-list li{padding:1rem 1rem}
+  .lp-clinic{padding:1.25rem 0 1.1rem}
+  .lp-clinic-inner{padding:1.1rem 1rem}
+  .lp-legal{
+    padding:0 1rem calc(1.2rem + env(safe-area-inset-bottom));
+    font-size:.75rem;
+  }
+  .lp-footer-cta{grid-template-columns:1fr 1fr}
+  .lp-footer-cta a{
+    font-size:.86rem;
+    min-height:52px;
+    padding:.7rem .4rem;
+    line-height:1.2;
+  }
+  .lp-faq .faq summary{padding:.9rem .95rem;font-size:.9rem}
+  .lp-faq .faq p{padding:0 .95rem 1rem;font-size:.88rem}
 }
 
 @media (max-width:380px){
-  .lp-trust{grid-template-columns:1fr;gap:.55rem}
-  .lp-trust > div{display:flex;align-items:baseline;gap:.45rem}
-  .lp-trust b{font-size:1rem}
-  .lp-trust span{font-size:.75rem}
+  .lp-copy h1{font-size:1.32rem}
+  .lp-trust b{font-size:.95rem}
+  .lp-trust span{font-size:.6rem}
+  .lp-footer-cta a{font-size:.78rem;gap:.25rem}
+  .lp-footer-wa svg{width:18px;height:18px}
 }
+
 
