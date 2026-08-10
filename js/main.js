@@ -128,14 +128,14 @@ if (contactForm) {
   });
 }
 
-/* ---------------- Free-trial / Book Consultation landing form ---------------- */
+/* ---------------- Free-trial landing form ---------------- */
 const trialForm = document.getElementById("trialForm");
 if (trialForm) {
   trialForm.addEventListener("submit", e => {
     e.preventDefault();
     const f = e.target;
     const msg =
-      "15-Day Free Hearing Aid Trial — Book Consultation%0A" +
+      "15-Day Free Hearing Aid Trial%0A" +
       "Landing page: free-trial.html%0A" +
       "Name: " + encodeURIComponent(f.name.value) + "%0A" +
       "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
@@ -143,6 +143,28 @@ if (trialForm) {
     window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
     f.reset();
     const ok = document.getElementById("trialFormOk");
+    if (ok) {
+      ok.hidden = false;
+      setTimeout(() => { ok.hidden = true; }, 6000);
+    }
+  });
+}
+
+/* ---------------- Book Consultation landing form ---------------- */
+const consultForm = document.getElementById("consultForm");
+if (consultForm) {
+  consultForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const f = e.target;
+    const msg =
+      "Book Hearing Consultation%0A" +
+      "Landing page: book-consultation.html%0A" +
+      "Name: " + encodeURIComponent(f.name.value) + "%0A" +
+      "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
+      "Preferred time: " + encodeURIComponent(f.preferred.value);
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+    f.reset();
+    const ok = document.getElementById("consultFormOk");
     if (ok) {
       ok.hidden = false;
       setTimeout(() => { ok.hidden = true; }, 6000);

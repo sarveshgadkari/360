@@ -273,7 +273,6 @@ h3{font-size:1.15rem}
 .footer-logo{width:auto;height:52px;max-width:200px;object-fit:contain;background:#fff;border-radius:6px;padding:.35rem .5rem;margin-bottom:.8rem}
 @media (max-width:680px){
   .logo-img{height:42px;max-width:160px}
-  .lp-brand img{height:48px;max-width:190px}
 }
 
 /* Hero photo card */
@@ -481,7 +480,8 @@ body.lp-page{padding-bottom:0}
   font-size:1rem;white-space:normal;min-height:50px;
 }
 .lp-form .form-note{margin-top:.7rem;font-size:.78rem;color:var(--ink-soft);text-align:center}
-.lp-form #trialFormOk{color:var(--green-700);font-weight:700}
+.lp-form #trialFormOk,
+.lp-form #consultFormOk{color:var(--green-700);font-weight:700}
 
 /* Offer stripe */
 .lp-stripe{
@@ -514,12 +514,47 @@ body.lp-page{padding-bottom:0}
   font-size:.95rem;
   letter-spacing:.01em;
   box-shadow:0 4px 14px rgba(10,64,35,.18);
-  white-space:nowrap;
+  white-space:normal;
+  text-align:center;
 }
 .lp-stripe-btn:hover{
   background:var(--green-900);
   border-color:var(--green-900);
   color:#fff;
+}
+
+/* Doctor highlight band (book-consultation) */
+.lp-doctor-band{
+  background:var(--green-100);
+  padding:clamp(1.8rem,5vw,3rem) 0;
+  border-block:1px solid #DCE7DE;
+}
+.lp-doctor-inner{max-width:720px;margin-inline:auto}
+.lp-doctor-copy h2{
+  color:var(--green-900);
+  margin:.35rem 0 .7rem;
+  font-size:clamp(1.25rem,4vw,1.85rem);
+}
+.lp-doctor-copy > p{
+  color:var(--ink-soft);
+  margin:0 auto 1.1rem;
+  max-width:40rem;
+  font-size:.98rem;
+}
+.lp-doctor-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem;
+  justify-content:center;
+}
+.lp-doctor-badges span{
+  background:#fff;
+  border:1px solid #DCE7DE;
+  color:var(--green-900);
+  font-size:.78rem;
+  font-weight:700;
+  padding:.35rem .8rem;
+  border-radius:999px;
 }
 
 .lp-steps,.lp-why,.lp-faq,.lp-clinic{padding:clamp(1.8rem,5vw,3.8rem) 0}
@@ -601,10 +636,6 @@ body.lp-page{padding-bottom:0}
 .lp-page .float-call,
 .lp-page .float-wa{display:none!important}
 
-@media (max-width:680px){
-  body.lp-page{padding-bottom:calc(3.6rem + env(safe-area-inset-bottom))!important}
-}
-
 /* Tablet */
 @media (max-width:900px){
   .lp-sticky .lp-wrap{justify-content:center}
@@ -618,34 +649,42 @@ body.lp-page{padding-bottom:0}
   .lp-step-list{grid-template-columns:1fr;gap:1.15rem}
   .lp-why-list{grid-template-columns:1fr}
   .lp-stripe-inner{flex-direction:column;gap:.85rem}
-  .lp-stripe .btn{width:100%;max-width:320px}
   .lp-stripe-btn{width:100%;max-width:320px;min-height:50px;font-size:1rem}
   .lp-clinic p{max-width:100%}
+  .lp-doctor-inner{width:92%}
 }
 
 /* Phone */
 @media (max-width:680px){
-  body.lp-page{padding-bottom:calc(3.6rem + env(safe-area-inset-bottom))}
-  .lp-page{padding-bottom:0}
+  body.lp-page{padding-bottom:calc(3.8rem + env(safe-area-inset-bottom))!important}
+  .lp-page{padding-bottom:0;overflow-x:hidden}
   .lp-wrap{width:min(1080px,94%)}
-  .lp-sticky{box-shadow:0 2px 10px rgba(0,0,0,.06)}
+  .lp-sticky{
+    position:sticky;top:0;z-index:90;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+  }
   .lp-sticky .lp-wrap{padding:.5rem 0;justify-content:center}
-  .lp-brand img{height:40px;max-width:150px}
+  .lp-brand img{height:40px;max-width:min(150px,72vw)}
   .lp-hero{padding:1rem 0 1.35rem}
   .lp-hero-grid{gap:1.1rem}
-  .lp-copy h1{font-size:1.45rem;text-align:center;line-height:1.25}
+  .lp-copy h1{
+    font-size:clamp(1.28rem,5.2vw,1.45rem);
+    text-align:center;
+    line-height:1.28;
+    hyphens:auto;
+  }
   .lp-lead{margin:.65rem auto 1rem;font-size:.93rem;text-align:center;max-width:34rem}
   .lp-checklist{gap:.55rem;margin:0 auto 1.1rem;justify-items:center}
   .lp-checklist li{font-size:.86rem;width:100%;max-width:20.5rem}
   .lp-trust{
-    gap:.4rem;
+    gap:.35rem .25rem;
     padding-top:1rem;
     margin:0 auto;
     width:100%;
     text-align:center;
   }
-  .lp-trust b{font-size:1.05rem}
-  .lp-trust span{font-size:.65rem;display:block}
+  .lp-trust b{font-size:1.02rem}
+  .lp-trust span{font-size:.64rem;display:block;line-height:1.25}
   .lp-form{
     padding:1.1rem .95rem;
     border-radius:10px;
@@ -653,29 +692,42 @@ body.lp-page{padding-bottom:0}
   }
   .lp-form h2{font-size:1.15rem;text-align:center}
   .lp-form > p{text-align:center}
-  .lp-stripe{padding:1.05rem 0}
-  .lp-stripe p{font-size:1.05rem;padding:0 .25rem}
-  .lp-stripe-btn{max-width:100%;width:100%;min-height:50px}
+  .lp-form .field input,
+  .lp-form .field select{width:100%;max-width:100%}
+  .lp-stripe{padding:1.05rem .2rem}
+  .lp-stripe p{font-size:1.02rem;padding:0 .35rem;line-height:1.35}
+  .lp-stripe-btn{max-width:100%;width:100%;min-height:50px;padding:.85rem 1rem}
+  .lp-doctor-band{padding:1.45rem 0}
+  .lp-doctor-copy h2{font-size:1.25rem;padding:0 .25rem}
+  .lp-doctor-copy > p{font-size:.9rem;padding:0 .35rem}
+  .lp-doctor-badges{gap:.45rem;padding:0 .25rem}
+  .lp-doctor-badges span{font-size:.7rem;padding:.28rem .65rem}
   .lp-steps,.lp-why,.lp-faq{padding:1.55rem 0}
   .lp-why{padding-top:0}
   .lp-wrap .section-head{margin-bottom:1.15rem}
+  .lp-wrap .section-head h2{padding:0 .2rem}
   .lp-step-list{gap:1rem}
   .lp-step-list li{padding-top:.9rem}
   .lp-step-num{font-size:1.25rem}
   .lp-step-list h3{font-size:1rem}
-  .lp-step-list p{font-size:.88rem;max-width:100%}
-  .lp-why-list li{padding:1rem 1rem}
+  .lp-step-list p{font-size:.88rem;max-width:100%;padding:0 .35rem}
+  .lp-why-list li{padding:1rem .95rem}
   .lp-clinic{padding:1.25rem 0 1.1rem}
-  .lp-clinic-inner{padding:1.1rem 1rem}
+  .lp-clinic-inner{padding:1.1rem .95rem}
+  .lp-clinic p{font-size:.9rem}
   .lp-legal{
-    padding:0 1rem calc(1.2rem + env(safe-area-inset-bottom));
-    font-size:.75rem;
+    padding:0 1rem calc(1.25rem + env(safe-area-inset-bottom));
+    font-size:.74rem;
+    line-height:1.5;
   }
-  .lp-footer-cta{grid-template-columns:1fr 1fr}
+  .lp-footer-cta{
+    grid-template-columns:1fr 1fr;
+    width:100%;
+  }
   .lp-footer-cta a{
-    font-size:.86rem;
+    font-size:.84rem;
     min-height:52px;
-    padding:.7rem .4rem;
+    padding:.7rem .35rem;
     line-height:1.2;
   }
   .lp-faq .faq summary{padding:.9rem .95rem;font-size:.9rem}
@@ -683,11 +735,12 @@ body.lp-page{padding-bottom:0}
 }
 
 @media (max-width:380px){
-  .lp-copy h1{font-size:1.32rem}
-  .lp-trust b{font-size:.95rem}
-  .lp-trust span{font-size:.6rem}
-  .lp-footer-cta a{font-size:.78rem;gap:.25rem}
+  .lp-copy h1{font-size:1.22rem}
+  .lp-trust b{font-size:.92rem}
+  .lp-trust span{font-size:.58rem}
+  .lp-footer-cta a{font-size:.76rem;gap:.2rem;padding:.65rem .25rem}
   .lp-footer-wa svg{width:18px;height:18px}
+  .lp-stripe p{font-size:.95rem}
 }
 
 
