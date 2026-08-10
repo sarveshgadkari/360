@@ -128,6 +128,28 @@ if (contactForm) {
   });
 }
 
+/* ---------------- Free-trial / Book Consultation landing form ---------------- */
+const trialForm = document.getElementById("trialForm");
+if (trialForm) {
+  trialForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const f = e.target;
+    const msg =
+      "15-Day Free Hearing Aid Trial — Book Consultation%0A" +
+      "Landing page: free-trial.html%0A" +
+      "Name: " + encodeURIComponent(f.name.value) + "%0A" +
+      "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
+      "Preferred time: " + encodeURIComponent(f.preferred.value);
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+    f.reset();
+    const ok = document.getElementById("trialFormOk");
+    if (ok) {
+      ok.hidden = false;
+      setTimeout(() => { ok.hidden = true; }, 6000);
+    }
+  });
+}
+
 /* ---------------- Auto lead-capture popup (Special Offer) ---------------- */
 (function () {
   const pop = document.getElementById("offerPopup");
