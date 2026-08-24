@@ -804,8 +804,8 @@ body.lp-page{padding-bottom:0}
 .ty-icon{
   width:64px;height:64px;margin:0 auto .9rem;
   border-radius:50%;
-  background:var(--green-100);
-  color:var(--green-700);
+  background:var(--yellow-300);
+  color:var(--green-900);
   font-size:1.85rem;font-weight:900;line-height:64px;
   animation:tyPop .45s ease-out;
 }
@@ -816,7 +816,12 @@ body.lp-page{padding-bottom:0}
 .ty-eyebrow{
   margin:0 0 .35rem;
   font-size:.78rem;font-weight:800;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--green-500);
+  text-transform:uppercase;color:var(--green-700);
+}
+.ty-eyebrow::before{
+  content:"";display:inline-block;width:18px;height:3px;
+  background:var(--yellow-500);border-radius:2px;
+  margin-right:.45rem;vertical-align:middle;
 }
 .ty-card h1{
   margin:0 0 .65rem;
