@@ -1,6 +1,14 @@
 /* Hearing 360 Degree — shared scripts */
 const WA_NUMBER = "918583927070"; // clinic WhatsApp
 
+function goThankYou(from) {
+  window.location.href = "thank-you.html?from=" + encodeURIComponent(from || "inquiry");
+}
+function openWaThenThankYou(msg, from) {
+  window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+  setTimeout(function () { goThankYou(from); }, 350);
+}
+
 /* Mobile nav */
 const toggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".nav");
@@ -46,7 +54,7 @@ if (modal) {
       "Name: " + encodeURIComponent(f.name.value) + "%0A" +
       "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
       "Message: " + encodeURIComponent(f.message.value);
-    window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+    openWaThenThankYou(msg, "inquiry");
     closeInquiry();
     f.reset();
   });
@@ -121,10 +129,8 @@ if (contactForm) {
       "Email: " + encodeURIComponent(f.email.value) + "%0A" +
       "Address: " + encodeURIComponent(f.address.value) + "%0A" +
       "Message: " + encodeURIComponent(f.message.value);
-    window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+    openWaThenThankYou(msg, "contact");
     f.reset();
-    const ok = document.getElementById("formOk");
-    if (ok) { ok.style.display = "block"; setTimeout(() => ok.style.display = "none", 6000); }
   });
 }
 
@@ -140,13 +146,8 @@ if (trialForm) {
       "Name: " + encodeURIComponent(f.name.value) + "%0A" +
       "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
       "Preferred time: " + encodeURIComponent(f.preferred.value);
-    window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+    openWaThenThankYou(msg, "trial");
     f.reset();
-    const ok = document.getElementById("trialFormOk");
-    if (ok) {
-      ok.hidden = false;
-      setTimeout(() => { ok.hidden = true; }, 6000);
-    }
   });
 }
 
@@ -162,13 +163,8 @@ if (consultForm) {
       "Name: " + encodeURIComponent(f.name.value) + "%0A" +
       "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
       "Preferred time: " + encodeURIComponent(f.preferred.value);
-    window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+    openWaThenThankYou(msg, "consultation");
     f.reset();
-    const ok = document.getElementById("consultFormOk");
-    if (ok) {
-      ok.hidden = false;
-      setTimeout(() => { ok.hidden = true; }, 6000);
-    }
   });
 }
 
@@ -227,7 +223,7 @@ if (consultForm) {
       "Offer: FREE Hearing Test + FREE Hearing Aid Trial%0A" +
       "Name: " + encodeURIComponent(f.name.value) + "%0A" +
       "Phone: " + encodeURIComponent(f.phone.value);
-    window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+    openWaThenThankYou(msg, "offer");
     hidePop();
     f.reset();
   });

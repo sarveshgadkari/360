@@ -776,4 +776,87 @@ body.lp-page{padding-bottom:0}
   .lp-stripe p{font-size:.95rem}
 }
 
+/* ============ Thank-you page ============ */
+.ty-page{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--green-100), transparent 55%),
+    linear-gradient(180deg, #fff 0%, #F7FBF7 100%);
+  padding-bottom:2rem!important;
+}
+.ty-main{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2.5rem 0 1.5rem;
+  min-height:calc(100vh - 8rem);
+}
+.ty-card{
+  width:min(520px,94%);
+  margin:0 auto;
+  text-align:center;
+  background:#fff;
+  border:1px solid #DCE7DE;
+  border-radius:12px;
+  padding:2.25rem 1.75rem 2rem;
+  box-shadow:0 12px 40px rgba(10,64,35,.08);
+}
+.ty-icon{
+  width:64px;height:64px;margin:0 auto .9rem;
+  border-radius:50%;
+  background:var(--green-100);
+  color:var(--green-700);
+  font-size:1.85rem;font-weight:900;line-height:64px;
+  animation:tyPop .45s ease-out;
+}
+@keyframes tyPop{
+  from{transform:scale(.6);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.ty-eyebrow{
+  margin:0 0 .35rem;
+  font-size:.78rem;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--green-500);
+}
+.ty-card h1{
+  margin:0 0 .65rem;
+  font-family:var(--font-display);
+  font-size:clamp(1.45rem,4vw,1.85rem);
+  color:var(--green-900);line-height:1.25;
+}
+.ty-lead{
+  margin:0 auto 1.35rem;
+  max-width:26rem;
+  font-size:1rem;line-height:1.55;color:var(--ink-soft);
+}
+.ty-next{
+  list-style:none;margin:0 0 1.5rem;padding:0;
+  text-align:left;max-width:22rem;margin-inline:auto;
+  display:grid;gap:.55rem;
+}
+.ty-next li{
+  position:relative;padding-left:1.15rem;
+  font-size:.9rem;line-height:1.45;color:var(--ink);
+}
+.ty-next li::before{
+  content:"";position:absolute;left:0;top:.45rem;
+  width:7px;height:7px;border-radius:50%;background:var(--green-500);
+}
+.ty-actions{
+  display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-bottom:1.15rem;
+}
+.ty-actions .btn{min-width:min(100%,11rem);min-height:46px}
+.ty-links{
+  margin:0;font-size:.88rem;color:var(--ink-soft);
+  display:flex;flex-wrap:wrap;gap:.4rem .65rem;justify-content:center;align-items:center;
+}
+.ty-links a{color:var(--green-700);font-weight:700;text-decoration:underline}
+.ty-legal{padding-bottom:1.5rem!important}
+
+@media (max-width:680px){
+  .ty-main{padding:1.25rem 0 1rem;min-height:auto}
+  .ty-card{padding:1.65rem 1.15rem 1.5rem;border-radius:10px}
+  .ty-actions{flex-direction:column}
+  .ty-actions .btn{width:100%;min-width:0}
+}
 

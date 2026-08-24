@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hearing 360 Degree — Lead Forms (Share with Team)</title>
+<meta name="robots" content="noindex">
+<!--
+  ============================================================
+  SHARE THIS FILE WITH THE TEAM
+  ============================================================
+  Self-contained: Contact form + Book Consultation + Free Trial
+  + Thank You screen. No external CSS/JS files required.
+
+  HOW IT WORKS
+  1. User submits any form
+  2. WhatsApp opens with the lead message (clinic: 918583927070)
+  3. Thank-you screen is shown on this page
+
+  HOW TO USE ON WORDPRESS / LIVE SITE
+  - Option A: Host this HTML as a page section / Custom HTML block
+  - Option B: Copy one <form> block + the <script> at the bottom
+  - Change THANK_YOU_URL below if you have a separate thank-you page
+  - Change WA_NUMBER if the clinic WhatsApp number changes
+
+  THANK YOU PAGE URL (optional redirect instead of in-page screen):
+  Set USE_REDIRECT = true and THANK_YOU_URL to your thank-you page.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-900:#0A4023;
+  --green-700:#1B6E36;
+  --green-500:#397E47;
+  --green-100:#E9F3EA;
+  --yellow-500:#E6A817;
+  --yellow-300:#FFE666;
+  --ink:#3A3A3A;
+  --ink-soft:#6B6B6B;
+  --font-display:"Roboto Slab",Georgia,serif;
+  --font-body:"Roboto",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:linear-gradient(180deg,#fff 0%,#F7FBF7 100%);
+  line-height:1.6;
+  padding:1.5rem 1rem 3rem;
+}
+.wrap{width:min(1100px,100%);margin:0 auto}
+.brand{
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.5rem;padding:.75rem 0;
+}
+.brand img{height:56px;width:auto;max-width:200px;object-fit:contain}
+.share-note{
+  background:var(--green-100);
+  border:1px solid #C8DCCB;
+  border-radius:8px;
+  padding:1rem 1.15rem;
+  margin-bottom:1.75rem;
+  font-size:.9rem;
+}
+.share-note strong{color:var(--green-900)}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;
+  align-items:start;
+}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{
+  background:#fff;
+  border:1px solid #DCE7DE;
+  border-radius:12px;
+  padding:1.35rem 1.2rem 1.25rem;
+  box-shadow:0 8px 28px rgba(10,64,35,.06);
+}
+.card h2{
+  font-family:var(--font-display);
+  font-size:1.2rem;
+  color:var(--green-900);
+  margin-bottom:.35rem;
+}
+.card > p{font-size:.88rem;color:var(--ink-soft);margin-bottom:1rem}
+.field{margin-bottom:.75rem}
+.field label{
+  display:block;font-size:.78rem;font-weight:800;
+  color:var(--green-900);margin-bottom:.3rem;
+}
+.field input,.field select,.field textarea{
+  width:100%;font-family:var(--font-body);font-size:.95rem;
+  padding:.7rem .85rem;border:1.5px solid #D4E2D8;
+  border-radius:8px;background:#fff;color:var(--ink);
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--green-500);outline:none;
+}
+.field textarea{resize:vertical;min-height:90px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:100%;min-height:46px;margin-top:.25rem;
+  font-family:var(--font-body);font-weight:800;font-size:.95rem;
+  border:none;border-radius:6px;cursor:pointer;padding:.75rem 1rem;
+}
+.btn-yellow{background:var(--yellow-300);color:#3A3A3A}
+.btn-yellow:hover{background:var(--yellow-500);color:#fff}
+.btn-green{background:var(--green-500);color:#fff}
+.btn-green:hover{background:var(--green-700)}
+.btn-outline{
+  background:transparent;color:var(--green-500);
+  border:2px solid var(--green-500);
+}
+.note{font-size:.78rem;color:var(--ink-soft);margin-top:.65rem;text-align:center}
+
+/* Thank-you screen */
+#thankYouScreen{
+  display:none;
+  text-align:center;
+  max-width:520px;
+  margin:2rem auto 0;
+  background:#fff;
+  border:1px solid #DCE7DE;
+  border-radius:12px;
+  padding:2.25rem 1.5rem;
+  box-shadow:0 12px 40px rgba(10,64,35,.08);
+}
+#thankYouScreen.show{display:block}
+#formsPanel.hide{display:none}
+.ty-icon{
+  width:64px;height:64px;margin:0 auto .9rem;border-radius:50%;
+  background:var(--green-100);color:var(--green-700);
+  font-size:1.85rem;font-weight:900;line-height:64px;
+}
+#thankYouScreen h1{
+  font-family:var(--font-display);
+  font-size:1.55rem;color:var(--green-900);margin-bottom:.55rem;
+}
+#thankYouScreen .lead{color:var(--ink-soft);margin-bottom:1.25rem;font-size:.98rem}
+.ty-actions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1.25rem}
+.ty-actions .btn{width:auto;min-width:11rem}
+@media (max-width:560px){
+  .ty-actions{flex-direction:column}
+  .ty-actions .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <!-- Replace src with your logo URL on WordPress if needed -->
+    <img src="images/logo.jpeg" alt="Hearing 360 Degree" width="200" height="56"
+         onerror="this.style.display='none'">
+  </div>
+
+  <div class="share-note" id="teamNote">
+    <strong>For the team:</strong> Three lead forms below (Contact · Book Consultation · Free Trial).
+    On submit → WhatsApp opens with the lead → Thank You screen shows.
+    Copy any form block into WordPress / the live site. Script is at the bottom of this file.
+  </div>
+
+  <div id="formsPanel">
+    <div class="grid">
+
+      <!-- ========== 1) CONTACT US FORM ========== -->
+      <div class="card">
+        <h2>Contact Us</h2>
+        <p>Send us a message — we will get back shortly.</p>
+        <form id="contactForm" novalidate>
+          <div class="field">
+            <label for="cName">Name *</label>
+            <input id="cName" name="name" required placeholder="Your full name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="cPhone">Mobile No. *</label>
+            <input id="cPhone" name="phone" type="tel" required placeholder="10-digit mobile" autocomplete="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}">
+          </div>
+          <div class="field">
+            <label for="cEmail">Email</label>
+            <input id="cEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="cAddress">Address</label>
+            <input id="cAddress" name="address" placeholder="Your area / city">
+          </div>
+          <div class="field">
+            <label for="cMessage">Message *</label>
+            <textarea id="cMessage" name="message" required placeholder="How can we help?"></textarea>
+          </div>
+          <button class="btn btn-green" type="submit">Send Message</button>
+          <p class="note">Opens WhatsApp, then shows Thank You.</p>
+        </form>
+      </div>
+
+      <!-- ========== 2) BOOK CONSULTATION FORM ========== -->
+      <div class="card">
+        <h2>Book Consultation</h2>
+        <p>Share your details — we confirm your appointment slot.</p>
+        <form id="consultForm" novalidate>
+          <div class="field">
+            <label for="consultName">Your Name *</label>
+            <input id="consultName" name="name" required placeholder="Full name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="consultPhone">Phone Number *</label>
+            <input id="consultPhone" name="phone" type="tel" required placeholder="10-digit mobile" autocomplete="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}">
+          </div>
+          <div class="field">
+            <label for="consultPref">Preferred Time</label>
+            <select id="consultPref" name="preferred">
+              <option value="Anytime">Anytime</option>
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+            </select>
+          </div>
+          <button class="btn btn-yellow" type="submit">Book My Consultation</button>
+          <p class="note">No spam. No obligation.</p>
+        </form>
+      </div>
+
+      <!-- ========== 3) FREE TRIAL FORM ========== -->
+      <div class="card">
+        <h2>Book Free Trial</h2>
+        <p>15-day free hearing aid trial — we call to confirm.</p>
+        <form id="trialForm" novalidate>
+          <div class="field">
+            <label for="trialName">Your Name *</label>
+            <input id="trialName" name="name" required placeholder="Full name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="trialPhone">Phone Number *</label>
+            <input id="trialPhone" name="phone" type="tel" required placeholder="10-digit mobile" autocomplete="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}">
+          </div>
+          <div class="field">
+            <label for="trialPref">Preferred Time</label>
+            <select id="trialPref" name="preferred">
+              <option value="Anytime">Anytime</option>
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+            </select>
+          </div>
+          <button class="btn btn-yellow" type="submit">Book My Free Trial</button>
+          <p class="note">No spam. No obligation.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== THANK YOU SCREEN ========== -->
+  <div id="thankYouScreen" role="status" aria-live="polite">
+    <div class="ty-icon" aria-hidden="true">✓</div>
+    <p style="font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green-500);margin-bottom:.35rem">Request received</p>
+    <h1 id="tyTitle">Thank you!</h1>
+    <p class="lead" id="tyMessage">We have received your details. Our team will contact you shortly during working hours.</p>
+    <p style="font-size:.88rem;color:var(--ink-soft)">If WhatsApp opened, please send the message to complete your request.</p>
+    <div class="ty-actions">
+      <a class="btn btn-yellow" href="https://wa.me/918583927070" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <button class="btn btn-outline" type="button" id="tyBackBtn">Back to Forms</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* ===== TEAM SETTINGS — edit these ===== */
+  var WA_NUMBER = "918583927070";
+  /* If true, redirect to a separate thank-you page instead of in-page screen */
+  var USE_REDIRECT = false;
+  var THANK_YOU_URL = "thank-you.html"; /* e.g. "/thank-you/" on WordPress */
+
+  var formsPanel = document.getElementById("formsPanel");
+  var tyScreen = document.getElementById("thankYouScreen");
+  var tyTitle = document.getElementById("tyTitle");
+  var tyMessage = document.getElementById("tyMessage");
+  var teamNote = document.getElementById("teamNote");
+
+  var copy = {
+    contact: {
+      title: "Thank you for contacting us!",
+      message: "We have received your message. Our team at Hearing 360 Degree will get back to you soon."
+    },
+    consultation: {
+      title: "Thank you for booking a consultation!",
+      message: "We have received your consultation request. Our team will confirm your appointment shortly."
+    },
+    trial: {
+      title: "Thank you for booking your free trial!",
+      message: "We have received your 15-day free hearing aid trial request. Our team will confirm your slot shortly."
+    }
+  };
+
+  function showThankYou(from) {
+    var c = copy[from] || copy.contact;
+    if (USE_REDIRECT) {
+      window.location.href = THANK_YOU_URL + "?from=" + encodeURIComponent(from);
+      return;
+    }
+    tyTitle.textContent = c.title;
+    tyMessage.textContent = c.message;
+    if (formsPanel) formsPanel.classList.add("hide");
+    if (teamNote) teamNote.style.display = "none";
+    tyScreen.classList.add("show");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function openWhatsApp(text) {
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + text, "_blank");
+  }
+
+  function bindForm(id, from, buildMessage) {
+    var form = document.getElementById(id);
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      openWhatsApp(buildMessage(form));
+      form.reset();
+      setTimeout(function () { showThankYou(from); }, 350);
+    });
+  }
+
+  bindForm("contactForm", "contact", function (f) {
+    return "Contact form — Hearing 360 Degree%0A" +
+      "Name: " + encodeURIComponent(f.name.value) + "%0A" +
+      "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
+      "Email: " + encodeURIComponent(f.email.value) + "%0A" +
+      "Address: " + encodeURIComponent(f.address.value) + "%0A" +
+      "Message: " + encodeURIComponent(f.message.value);
+  });
+
+  bindForm("consultForm", "consultation", function (f) {
+    return "Book Hearing Consultation%0A" +
+      "Name: " + encodeURIComponent(f.name.value) + "%0A" +
+      "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
+      "Preferred time: " + encodeURIComponent(f.preferred.value);
+  });
+
+  bindForm("trialForm", "trial", function (f) {
+    return "15-Day Free Hearing Aid Trial%0A" +
+      "Name: " + encodeURIComponent(f.name.value) + "%0A" +
+      "Phone: " + encodeURIComponent(f.phone.value) + "%0A" +
+      "Preferred time: " + encodeURIComponent(f.preferred.value);
+  });
+
+  document.getElementById("tyBackBtn").addEventListener("click", function () {
+    tyScreen.classList.remove("show");
+    if (formsPanel) formsPanel.classList.remove("hide");
+    if (teamNote) teamNote.style.display = "";
+  });
+})();
+</script>
+</body>
+</html>

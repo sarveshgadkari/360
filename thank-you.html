@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Hearing 360 Degree | Garia, Kolkata</title>
+<meta name="description" content="Thank you for contacting Hearing 360 Degree. Our team will get back to you shortly.">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="lp-page ty-page">
+
+<header class="lp-sticky">
+  <div class="lp-wrap">
+    <a class="lp-brand" href="index.html" aria-label="Hearing 360 Degree">
+      <img src="images/logo.jpeg" alt="Hearing 360 Degree — For Smart Hearing" width="220" height="62" loading="eager">
+    </a>
+  </div>
+</header>
+
+<main class="ty-main">
+  <div class="lp-wrap ty-card">
+    <div class="ty-icon" aria-hidden="true">✓</div>
+    <p class="ty-eyebrow">Request received</p>
+    <h1 id="tyTitle">Thank you!</h1>
+    <p class="ty-lead" id="tyMessage">We have received your details. Our team will contact you shortly during working hours.</p>
+
+    <ul class="ty-next">
+      <li>Keep your phone nearby for our callback</li>
+      <li>If WhatsApp opened, please send the message to complete booking</li>
+      <li>Clinic hours: Mon–Sat 10:30 am – 8:30 pm · Sun till 2:00 pm</li>
+    </ul>
+
+    <div class="ty-actions">
+      <a class="btn btn-yellow" href="https://wa.me/918583927070" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="btn btn-outline" href="index.html">Back to Home</a>
+    </div>
+
+    <p class="ty-links">
+      <a href="book-consultation.html">Book Consultation</a>
+      <span aria-hidden="true">·</span>
+      <a href="free-trial.html">15-Day Free Trial</a>
+    </p>
+  </div>
+</main>
+
+<p class="lp-legal ty-legal">© 2026 Hearing 360 Degree · Garia, Kolkata</p>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var from = (params.get("from") || "").toLowerCase();
+  var title = document.getElementById("tyTitle");
+  var msg = document.getElementById("tyMessage");
+  if (from === "trial" || from === "free-trial") {
+    title.textContent = "Thank you for booking your free trial!";
+    msg.textContent = "We have received your 15-day free hearing aid trial request. Our team will confirm your slot shortly.";
+  } else if (from === "consultation" || from === "consult") {
+    title.textContent = "Thank you for booking a consultation!";
+    msg.textContent = "We have received your consultation request with our senior audiologist. Our team will confirm your appointment shortly.";
+  } else if (from === "contact") {
+    title.textContent = "Thank you for contacting us!";
+    msg.textContent = "We have received your message. Our team at Hearing 360 Degree will get back to you soon.";
+  } else if (from === "offer") {
+    title.textContent = "Thank you — offer claimed!";
+    msg.textContent = "We have received your free hearing test request. Our team will call you back within working hours.";
+  }
+})();
+</script>
+</body>
+</html>
